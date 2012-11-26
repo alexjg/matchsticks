@@ -16,6 +16,11 @@ class Matcher(object):
         raise AssertionError("{0} is not equal to {1}".format(
             self.some_obj, other))
 
+class SubDictMatches(Matcher):
+
+    def __init__(self, expected):
+        super(SubDictMatches, self).__init__(assert_in_dicts, expected)
+
 def assert_in_dicts(expected, actual, comp_func=eq):
     """Checks that all the key value pairs in expected are in a dictionary
     in actual, which is a template context
